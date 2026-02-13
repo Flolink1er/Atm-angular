@@ -3,9 +3,8 @@ import { PinPad } from '../pin-pad/pin-pad';
 import { SelectAction } from '../select-action/select-action';
 import { SelectCard } from '../select-card/select-card';
 import { AtmSteps } from '../../models/enums/atm-steps';
-import { Landing } from '../landing/landing';
+import { Landing } from '../landing-atm/landing';
 import { Card } from '../../models/card';
-import { CUSTOMERS } from '../../models/data/customers.mock';
 
 @Component({
   selector: 'app-atm-screen',

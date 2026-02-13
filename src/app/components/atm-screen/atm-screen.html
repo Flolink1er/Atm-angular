@@ -1,6 +1,6 @@
 @switch (currentStep) {
 @case (AtmSteps.MACHINE_HOME){
-<app-landing (change)="nextStep(AtmSteps.SELECT_CARD)" />
+<app-landing-atm (change)="nextStep(AtmSteps.SELECT_CARD)" />
 }
 @case (AtmSteps.SELECT_CARD){
 <app-select-card (cardPicked)="pickCard($event)"></app-select-card>

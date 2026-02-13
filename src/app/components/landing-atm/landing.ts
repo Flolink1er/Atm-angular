@@ -4,7 +4,7 @@ import { MatDividerModule } from '@angular/material/divider';
 import { MatIconModule } from '@angular/material/icon';
 
 @Component({
-  selector: 'app-landing',
+  selector: 'app-landing-atm',
   imports: [MatButtonModule, MatDividerModule, MatIconModule],
   templateUrl: './landing.html',
   styleUrl: './landing.scss',

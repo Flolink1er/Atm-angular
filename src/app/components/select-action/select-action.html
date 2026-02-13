@@ -97,6 +97,9 @@
         @if (changePIN.get('confirmator')?.hasError('matching')){
         <mat-error>Veuillez entrez le même code<strong> PIN</strong></mat-error>
         }
+        @else if (changePIN.get('confirmator')?.hasError('pattern')){
+        <mat-error>Votre code PIN de dois contenir que des<strong> chiffres</strong></mat-error>
+        }
       </mat-form-field>
     </form>
   </mat-expansion-panel>

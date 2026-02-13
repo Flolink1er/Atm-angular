@@ -48,8 +48,8 @@ export class SelectAction {
   public readonly withdrawal = new FormControl(null, [Validators.required, Validators.min(5), isMultiple(5)]);
   public readonly deposit = new FormControl(null, [Validators.required, Validators.min(5), isMultiple(5)]);
   public readonly changePIN = new FormGroup({
-    newPin : new FormControl('', [Validators.required, Validators.minLength(4), Validators.maxLength(4), matchValidator('confirmator', true)]),
-    confirmator: new FormControl('', [Validators.required, Validators.minLength(4), Validators.maxLength(4), matchValidator('newPin')]),
+    newPin : new FormControl('', [Validators.required, Validators.minLength(4), Validators.pattern("[0-9]+"), Validators.maxLength(4), matchValidator('confirmator', true)]),
+    confirmator: new FormControl('', [Validators.required, Validators.pattern("[0-9]+"), Validators.minLength(4), Validators.maxLength(4), matchValidator('newPin')]),
   })
   private _snackBar = inject(MatSnackBar);
   private withdrawMaxValidationRef? : ValidatorFn
