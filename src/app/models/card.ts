@@ -71,6 +71,7 @@ export class Card {
     }
   }
 
+  //méthode permettant de recréer l'instance d'une carte passée en json (localStorage)
   static fromJson(json: any): Card {
     return new Card(json._cardNumber, json._pin, json._balance, json._type, json._bank);
   }

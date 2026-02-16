@@ -23,7 +23,11 @@ export class ListScreen {
       var customers: Customer[];
       if (localStorage.getItem('customerList') !== null){
         let raw = JSON.parse(localStorage.getItem('customerList')!)
-        customers = raw.map(Customer.fromJson);
+        customers = raw.map((data: Customer) => {
+          const customer = Customer.fromJson(data);
+          customer.formatCards(customer.cards.map(Card.fromJson));
+          return customer;
+        });
 
       }else{
         customers= [];

@@ -46,13 +46,11 @@ export class LandingList {
       var customers: Customer[];
       if (localStorage.getItem('customerList') !== null){
         let raw = JSON.parse(localStorage.getItem('customerList')!)
-        customers = raw.map(Customer.fromJson);
-
-        for (const customer of customers){
-          const rawCard = customer.cards;
-          const cards = rawCard.map(Card.fromJson);
-          customer.formatCards(cards);
-        }
+        customers = raw.map((data: Customer) => {
+          const customer = Customer.fromJson(data);
+          customer.formatCards(customer.cards.map(Card.fromJson));
+          return customer;
+        });
 
 
       }else{
@@ -68,12 +66,12 @@ export class LandingList {
     this.openedPanels.update(state => ({
     ...state,
     [fullname]: index
-  }));
-}
+    }));
+  }
 
-public isOpened(fullname: string, index: number) {
-  return this.openedPanels()[fullname] === index;
-}
+  public isOpened(fullname: string, index: number) {
+    return this.openedPanels()[fullname] === index;
+  }
 
   public ngAfterViewInit() {
     this.dataSource.paginator = this.paginator;

@@ -33,6 +33,7 @@ export class Customer{
     return this._cards;
   }
 
+  //méthode permettant de recréer l'instance d'une carte passée en json (localStorage)
   static fromJson(json: any): Customer {
     return new Customer(json._firstName, json._lastName, json._gender, json._birthDate, json._address, json._cards);
   }
@@ -41,6 +42,7 @@ export class Customer{
     this._cards.push(card);
   }
 
+  //remplace la liste des cards pour la mettre à jour
   public formatCards(cards: Card[]): void{
     this._cards = cards;
   }
