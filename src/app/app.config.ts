@@ -7,6 +7,7 @@ import { registerLocaleData } from '@angular/common';
 export const appConfig: ApplicationConfig = {
   providers: [
     provideBrowserGlobalErrorListeners(),
-    provideRouter(routes)
+    provideRouter(routes),
+    { provide: LOCALE_ID, useValue: 'fr-BE'}
   ]
 };

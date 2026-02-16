@@ -71,4 +71,8 @@ export class Card {
     }
   }
 
+  static fromJson(json: any): Card {
+    return new Card(json._cardNumber, json._pin, json._balance, json._type, json._bank);
+  }
+
 }

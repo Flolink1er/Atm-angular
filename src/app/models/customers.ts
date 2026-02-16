@@ -32,4 +32,16 @@ export class Customer{
   public get cards(): Card[]{
     return this._cards;
   }
+
+  static fromJson(json: any): Customer {
+    return new Customer(json._firstName, json._lastName, json._gender, json._birthDate, json._address, json._cards);
+  }
+
+  public addCard(card: Card): void{
+    this._cards.push(card);
+  }
+
+  public formatCards(cards: Card[]): void{
+    this._cards = cards;
+  }
 }
