@@ -1,4 +1,4 @@
-import { Component, output } from '@angular/core';
+import { Component, effect, output } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatIconModule } from '@angular/material/icon';
@@ -15,8 +15,28 @@ import { Card } from '../../models/card';
 })
 export class SelectCard {
   public change = output();
-  public customers : Customer[] = CUSTOMERS
+  public customers ?: Customer[];
   public cardPicked = output<Card>();
+
+  constructor(){
+    effect(() =>{
+      var customers: Customer[];
+      if (localStorage.getItem('customerList') !== null){
+        let raw = JSON.parse(localStorage.getItem('customerList')!)
+        customers = raw.map((data: Customer) => {
+          const customer = Customer.fromJson(data);
+          customer.formatCards(customer.cards.map(Card.fromJson));
+          return customer;
+        });
+
+
+      }else{
+        customers= [];
+      }
+
+      this.customers = customers;
+      });
+  }
 
   public nextStep() {
     this.change.emit();
