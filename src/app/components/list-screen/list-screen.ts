@@ -42,9 +42,8 @@ export class ListScreen {
   }
 
   public createCust(newUser: Customer): void{
-    var customerList : Customer[];
     if (!localStorage.getItem('customerList')){
-      customerList = [newUser];
+      this.customerList = [newUser];
     }else{
       let raw = JSON.parse(localStorage.getItem('customerList')!)
       this.customerList = raw.map(Customer.fromJson);

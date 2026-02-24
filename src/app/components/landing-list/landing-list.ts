@@ -94,4 +94,14 @@ export class LandingList {
   public createCard(){
     this.changeStep.emit(ListSteps.CREATE_CARD);
   }
+
+  public card_del(card: Card, customer: Customer): void{
+    for (const cust of this.customerList!){
+      if (cust == customer){
+        cust.delete_card(card);
+      }
+    }
+
+    localStorage.setItem('customerList', JSON.stringify(this.customerList));
+  }
 }
